@@ -15,6 +15,11 @@ class Event(models.Model):
 	description = models.TextField(verbose_name=u'Descrição', blank=True)
 	created_at = models.DateTimeField(verbose_name=u'Criado em', auto_now_add=True)
 	link = models.URLField(verbose_name=u'Link', blank=True)
+	public = models.BooleanField(verbose_name=u'Público?', default=True)
+
+	def comments_count(self):
+		return self.comments.count();
+	comments_count.short_description = u'Número de comentários'
 
 	def __unicode__(self):
 		return self.name
