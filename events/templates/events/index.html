@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block container %}
+      <div class="page-header">
+        <h1>Eventos<small>listagem de eventos</small></h1>
+        <br/>
+        <ul>
+        	{% for ev in events %}
+        	<!-- { if ev.public %} -->
+        	<li>
+        		<h4><a href="{% url events_details ev.pk %}">{{ ev.name }}</a></h4>
+        		<p> {{ ev.description|truncatewords:"20" }} </p> <!-- truncatewords:"20" pega as 20 primeiras palavras e depois coloca ... -->
+        		<br/>
+        	</li>
+        	<!-- { endif %} -->
+
+        	{% endfor %}
+    	</ul>
+      </div>
+{% endblock %}

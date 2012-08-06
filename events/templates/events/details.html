@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block container %}
+      <div class="page-header">
+        <h1>{{ event }}</h1>
+        <br/>
+        <h4>Descrição do evento</h4><br/>
+        {{ event.description|linebreaks }} <!-- converte as quebras de linha em br
+      </div>
+{% endblock %}
