@@ -3,6 +3,7 @@
 from django.shortcuts import render#_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
+from forms import ContactForm
 
 def home(request):
 	context = {
@@ -14,5 +15,16 @@ def home(request):
 	#o render retorna o request, o nome do template e o contexto
 
 def contact(request):
-	return render(request, "contact.html")
+	context = { }
+
+	if request.method == 'POST':
+		form = ContactForm( request.POST )
+		if form.is_valid():
+			context['data'] = form.cleaned_data
+
+	else:
+		form = ContactForm()
+	context['form'] = form
+
+	return render(request, "contact.html", context)
 

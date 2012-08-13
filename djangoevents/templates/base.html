@@ -36,6 +36,9 @@
               <li><a href="{% url contact %}">Contato</a></li>
               <li><a href="{% url events %}">Eventos</a></li>
             </ul>
+            <form class="navbar-search pull-left" action="{% url events %}" method="get">  
+              <input class="search-query span2" placeholder="Pesquisar" type="text" name="search" />
+            </form>
           </div><!--/.nav-collapse -->
         </div>
       </div>
