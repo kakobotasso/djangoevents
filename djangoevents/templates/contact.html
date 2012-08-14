@@ -6,18 +6,25 @@
       </div>
       <div class="row">
       	<div class="span6">
-      		{% if data  %}
-      			<p>Nome enviado: {{ data.name }} </p>
-      			<p>E-mail enviado: {{ data.email }} </p>
-      			<p>Mensagem enviada: {{ data.message }} </p>
-      		{% else %}
+                  {% if success %}
+                  <div class="alert alert-success">
+                        Mensagem de contato enviada com sucesso
+                  </div>
+                  {% else %}
       		<form class="well" action="" method="post">
       			{% csrf_token %}
       			{% for field in form %}
-      				<div class="control-group">
+      				<div class="control-group {% if field.errors %} error {% endif %}">
       					{{ field.label_tag }}
       					{{ field }}
-      					{{ field.errors }}
+                                    {% if field.errors %}
+                                          <span class="help-block">
+                                                {{ field.errors|join:", " }}
+                                                <!--{ for error in field.errors %}
+                                                { error }
+                                                { endfor %} -->
+                                          </span>
+                                    {% endif %}
       				</div>
       			{% endfor %}
       			<div class="control-group">
@@ -25,7 +32,7 @@
       			</div>
       			<!-- { form.as_p } -->
       		</form>
-      		{% endif %}
+                  {% endif %}
       	</div>
       	<div class="span6">
       		<a href="mailto:kakodev@gmail.com">kakodev@gmail.com</a>

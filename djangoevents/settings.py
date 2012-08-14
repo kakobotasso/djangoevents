@@ -159,3 +159,11 @@ LOGGING = {
         },
     }
 }
+
+#E-mails
+DEFAULT_FROM_EMAIL = 'Seu email <email@gmail.com>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'email@gmail.com'
+EMAIL_HOST_PASSWORD = 'senha'
+EMAIL_PORT = 587

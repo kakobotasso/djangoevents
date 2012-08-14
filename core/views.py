@@ -20,7 +20,9 @@ def contact(request):
 	if request.method == 'POST':
 		form = ContactForm( request.POST )
 		if form.is_valid():
-			context['data'] = form.cleaned_data
+			#context['data'] = form.cleaned_data
+			form.send_mail()
+			context['success'] = True
 
 	else:
 		form = ContactForm()
